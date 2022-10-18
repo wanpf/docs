@@ -73,7 +73,7 @@ dig @127.0.0.1 -p 5300 10.233.105.172.in-addr.arpa PTR
 dig @127.0.0.1 -p 5300 _sip._udp.7006581001.siptrunking.appiaservices.com SRV
 ```
 ## 4、测试情况, dns 的请求、应答时的 JSON 数据情况
-dig @127.0.0.1 -p 5300 www.baidu.com A
+**dig @127.0.0.1 -p 5300 www.baidu.com A**
 ```
 2022-10-18 08:26:21.246 [INF] === request ===
  {
@@ -139,7 +139,7 @@ dig @127.0.0.1 -p 5300 www.baidu.com A
     ]
 }
 ```
-dig @127.0.0.1 -p 5300 www.baidu.com AAAA
+**dig @127.0.0.1 -p 5300 www.baidu.com AAAA**
 ```
 2022-10-18 08:27:40.764 [INF] === request ===
  {
@@ -215,7 +215,7 @@ dig @127.0.0.1 -p 5300 www.baidu.com AAAA
     ]
 }
 ```
-dig @127.0.0.1 -p 5300 www.baidu.com CNAME
+**dig @127.0.0.1 -p 5300 www.baidu.com CNAME**
 ```
 2022-10-18 08:28:23.893 [INF] === request ===
  {
@@ -269,7 +269,7 @@ dig @127.0.0.1 -p 5300 www.baidu.com CNAME
     ]
 }
 ```
-dig @127.0.0.1 -p 5300 baidu.com MX
+**dig @127.0.0.1 -p 5300 baidu.com MX**
 ```
 2022-10-18 08:28:59.324 [INF] === request ===
  {
@@ -371,7 +371,7 @@ dig @127.0.0.1 -p 5300 baidu.com MX
     ]
 }
 ```
-dig @127.0.0.1 -p 5300 baidu.com TXT
+**dig @127.0.0.1 -p 5300 baidu.com TXT**
 ```
 2022-10-18 08:29:34.949 [INF] === request ===
  {
@@ -437,7 +437,7 @@ dig @127.0.0.1 -p 5300 baidu.com TXT
     ]
 }
 ```
-dig @127.0.0.1 -p 5300 baidu.com SOA
+**dig @127.0.0.1 -p 5300 baidu.com SOA**
 ```
 2022-10-18 08:30:08.691 [INF] === request ===
  {
@@ -499,7 +499,7 @@ dig @127.0.0.1 -p 5300 baidu.com SOA
     ]
 }
 ```
-dig @127.0.0.1 -p 5300 10.233.105.172.in-addr.arpa PTR
+**dig @127.0.0.1 -p 5300 10.233.105.172.in-addr.arpa PTR**
 ```
 2022-10-18 08:30:55.820 [INF] === request ===
  {
@@ -553,7 +553,7 @@ dig @127.0.0.1 -p 5300 10.233.105.172.in-addr.arpa PTR
     ]
 }
 ```
-dig @127.0.0.1 -p 5300 _sip._udp.7006581001.siptrunking.appiaservices.com SRV
+**dig @127.0.0.1 -p 5300 _sip._udp.7006581001.siptrunking.appiaservices.com SRV**
 ```
 2022-10-18 08:31:30.596 [INF] === request ===
  {

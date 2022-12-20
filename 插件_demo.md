@@ -207,8 +207,7 @@ metadata:
   namespace: curl
 spec:
   config:
-    token-verifier-1:
-      AccessToken: '123456'
+    AccessToken: '123456'
   plugin: token-injector-1
   destinationRefs:
     - kind: Service
@@ -224,8 +223,7 @@ metadata:
   namespace: pipy
 spec:
   config:
-    token-verifier-1:
-      AccessToken: '123456'
+    AccessToken: '123456'
   plugin: token-verifier-1
   destinationRefs:
     - kind: Service

@@ -62,6 +62,7 @@ kubectl patch meshconfig osm-mesh-config -n "$osm_namespace" -p '{"spec":{"featu
 #### 3.2.2 声明插件
 
 ```bash
+
 kubectl apply -f - <<EOF
 kind: Plugin
 apiVersion: plugin.flomesh.io/v1alpha1
@@ -70,39 +71,39 @@ metadata:
 spec:
   priority: 1
   pipyscript: |+
-(
-pipy({
-  _pluginName: '',
-  _pluginConfig: null,
-  _accessToken: null,
-  _valid: false,
-})
+    (
+    pipy({
+      _pluginName: '',
+      _pluginConfig: null,
+      _accessToken: null,
+      _valid: false,
+    })
 
-.import({
-  __port: 'inbound-main',
-})
+    .import({
+        __port: 'inbound-main',
+    })
 
-.pipeline()
-.onStart(
-  () => void (
-    _pluginName = __filename.slice(9, -3),
-    _pluginConfig = __port?.Plugins?.[_pluginName],
-    _accessToken = _pluginConfig?.AccessToken
-  )
-)
-.handleMessageStart(
-  msg => (msg.head.headers['accesstoken'] === _accessToken) && (_valid = true)
-)
-.branch(
-  () => _valid, (
-    $ => $.chain()
-  ), (
-    $ => $.replaceMessage(
-      new Message({ status: 403 }, 'token verify failed')
+    .pipeline()
+    .onStart(
+    () => void (
+        _pluginName = __filename.slice(9, -3),
+        _pluginConfig = __port?.Plugins?.[_pluginName],
+        _accessToken = _pluginConfig?.AccessToken
     )
-  )
-)
-)
+    )
+    .handleMessageStart(
+        msg => (msg.head.headers['accesstoken'] === _accessToken) && (_valid = true)
+    )
+    .branch(
+      () => _valid, (
+        $ => $.chain()
+    ), (
+        $ => $.replaceMessage(
+        new Message({ status: 403 }, 'token verify failed')
+        )
+    )
+    )
+    )
 EOF
 
 kubectl apply -f - <<EOF
@@ -113,31 +114,32 @@ metadata:
 spec:
   priority: 2
   pipyscript: |+
-(
-pipy({
-  _pluginName: '',
-  _pluginConfig: null,
-  _accessToken: null,
-})
+    (
+    pipy({
+      _pluginName: '',
+      _pluginConfig: null,
+      _accessToken: null,
+    })
 
-.import({
-  __port: 'outbound-main',
-})
+    .import({
+        __port: 'outbound-main',
+    })
 
-.pipeline()
-.onStart(
-  () => void (
-    _pluginName = __filename.slice(9, -3),
-    _pluginConfig = __port?.Plugins?.[_pluginName],
-    _accessToken = _pluginConfig?.AccessToken
-  )
-)
-.handleMessageStart(
-  msg => _accessToken && (msg.head.headers['accesstoken'] = _accessToken) 
-)
-.chain()
-)
+    .pipeline()
+    .onStart(
+        () => void (
+            _pluginName = __filename.slice(9, -3),
+            _pluginConfig = __port?.Plugins?.[_pluginName],
+            _accessToken = _pluginConfig?.AccessToken
+        )
+    )
+    .handleMessageStart(
+        msg => _accessToken && (msg.head.headers['accesstoken'] = _accessToken) 
+    )
+    .chain()
+    )
 EOF
+
 ```
 
 #### 3.2.3 设置插件链

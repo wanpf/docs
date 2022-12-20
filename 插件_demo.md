@@ -240,5 +240,63 @@ osm proxy get config_dump -n curl "$curl_client" | jq
 ```
 
 ## 4. 测试 
+### 4.1 访问 http://pipy-ok.pipy:8080  
+```bash
 
+curl_client="$(kubectl get pod -n curl -l app=curl -o jsonpath='{.items[0].metadata.name}')"
+
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok.pipy:8080
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok.pipy:8080
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok.pipy:8080
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok.pipy:8080
+
+```
+结果：  
+1、访问 V1 失败  
+HTTP/1.1 403 Forbidden  
+content-length: 19  
+connection: keep-alive  
+
+token verify failed  
+
+2、访问 V2 成功  
+HTTP/1.1 200 OK  
+osm-stats: pipy,Deployment,pipy-ok-v2,pipy-ok-v2-cf87cc878-7jpnf  
+content-length: 20  
+connection: keep-alive  
+
+Hi, I am PIPY-OK v2!  
+
+### 4.2 访问 http://pipy-ok-v1.pipy:8080  
+```bash
+curl_client="$(kubectl get pod -n curl -l app=curl -o jsonpath='{.items[0].metadata.name}')"
+
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok-v1.pipy:8080
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok-v1.pipy:8080
+
+```
+结果：  
+访问 V1 成功   
+HTTP/1.1 200 OK  
+osm-stats: pipy,Deployment,pipy-ok-v1,pipy-ok-v1-7645cf6d5d-xk4mv  
+content-length: 20  
+connection: keep-alive  
+
+Hi, I am PIPY-OK v1!  
+
+### 4.3 访问 http://pipy-ok-v2.pipy:8080  
+```bash
+curl_client="$(kubectl get pod -n curl -l app=curl -o jsonpath='{.items[0].metadata.name}')"
+
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok-v2.pipy:8080
+kubectl exec ${curl_client} -n curl -c curl -- curl -ksi http://pipy-ok-v2.pipy:8080
+```
+结果：  
+访问 V2 成功  
+HTTP/1.1 200 OK  
+osm-stats: pipy,Deployment,pipy-ok-v2,pipy-ok-v2-cf87cc878-7jpnf  
+content-length: 20  
+connection: keep-alive  
+
+Hi, I am PIPY-OK v2!  
 

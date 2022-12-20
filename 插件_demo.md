@@ -205,10 +205,8 @@ metadata:
   namespace: curl
 spec:
   config:
-    http:
-    - matches:
-      unit: minute
-      burst: 10
+    token-verifier-1:
+      AccessToken: '123456'
   plugin: token-injector-1
   destinationRefs:
     - kind: Service
@@ -224,10 +222,8 @@ metadata:
   namespace: pipy
 spec:
   config:
-    http:
-    - matches:
-      unit: minute000
-      burst: 10000
+    token-verifier-1:
+      AccessToken: '123456'
   plugin: token-verifier-1
   destinationRefs:
     - kind: Service
@@ -243,17 +239,6 @@ curl_client="$(kubectl get pod -n curl -l app=curl -o jsonpath='{.items[0].metad
 osm proxy get config_dump -n curl "$curl_client" | jq
 ```
 
-本业务场景测试完毕，清理策略，以避免影响后续测试
+## 4. 测试 
 
-```bash
-export osm_namespace=osm-system
-kubectl patch meshconfig osm-mesh-config -n "$osm_namespace" -p '{"spec":{"featureFlags":{"enablePluginPolicy":false}}}' --type=merge
 
-kubectl get pluginconfig -A
-kubectl delete pluginconfig -n curl curl-logs-demo-1
-kubectl get pluginchain -A
-kubectl delete pluginchain -n curl logs-demo-chain
-kubectl get plugin -A
-kubectl delete plugin logs-demo-1
-kubectl delete plugin logs-demo-2
-```

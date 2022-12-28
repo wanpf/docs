@@ -80,14 +80,14 @@ spec:
     })
 
     .import({
-        __port: 'inbound-main',
+        __plugins: 'inbound',
     })
 
     .pipeline()
     .onStart(
     () => void (
         _pluginName = __filename.slice(9, -3),
-        _pluginConfig = __port?.Plugins?.[_pluginName],
+        _pluginConfig = __plugins?.[_pluginName],
         _accessToken = _pluginConfig?.AccessToken
     )
     )
@@ -122,14 +122,14 @@ spec:
     })
 
     .import({
-        __port: 'outbound-main',
+        __plugins: 'outbound',
     })
 
     .pipeline()
     .onStart(
         () => void (
             _pluginName = __filename.slice(9, -3),
-            _pluginConfig = __port?.Plugins?.[_pluginName],
+            _pluginConfig = __plugins?.[_pluginName],
             _accessToken = _pluginConfig?.AccessToken
         )
     )

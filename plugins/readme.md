@@ -306,3 +306,5 @@ connection: keep-alive
 
 Hi, I am PIPY-OK v2!  
 ```
+## 5. 文档
+*[Pipy sidecar 模块设计与插件开发说明](https://github.com/wanpf/docs/blob/main/plugins/Pipy%20sidecar%20%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E8%AF%B4%E6%98%8E.pdf)*

@@ -255,6 +255,14 @@ kubectl apply -n java-tracing -f https://raw.githubusercontent.com/cybwan/osm-ed
 ### 4. 访问 java 服务 ###
 ```bash
 curl_client="$(kubectl get pod -n java-tracing -l app=curl -o jsonpath='{.items[0].metadata.name}')"
+
+kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
+kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
+kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
+kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
+kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
+kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
+kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
 kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090.java-tracing.svc.cluster.local:9090/fetchAndStore/9090
 ```
   

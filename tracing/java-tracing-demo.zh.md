@@ -275,3 +275,14 @@ kubectl exec ${curl_client} -n java-tracing -c curl -- curl -ksi http://www-9090
 如果前者小于后者，则需要进行采样处理。  
 **采样率使用上游传播方式**  
 如果上一节点设置了采样率，则采用上一节点相同的采样率，否者根据采样率计算采样结果。  
+#### 3. java 工程需要引入 sleuth 依赖包 ####  
+```bash
+<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-sleuth -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-sleuth</artifactId>
+    <version>1.2.6.RELEASE</version>
+</dependency> 
+```
+  
+    

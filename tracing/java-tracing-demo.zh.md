@@ -24,7 +24,7 @@ osm install \
     --set=osm.controllerLogLevel=warn \
     --set=osm.deployJaeger="true" \
     --set=osm.tracing.enable="true" \
-    --set=osm.tracing.address="jaeger.osm-system.svc.cluster.local:9411" \
+    --set=osm.tracing.address="jaeger.osm-system.svc.cluster.local" \
     --set=osm.tracing.sampledFraction=1.0 \
     --timeout=900s
 ```

@@ -28,11 +28,10 @@ osm install \
     --set=osm.image.pullPolicy=Always \
     --set=osm.sidecarLogLevel=warn \
     --set=osm.controllerLogLevel=warn \
-    --set=osm.remoteLogging.enable=true \ 
+    --set=osm.remoteLogging.enable=true \
     --set=osm.remoteLogging.address=10.25.0.100 \
     --set=osm.remoteLogging.port=8123 \
     --set=osm.remoteLogging.authorization="Basic ZGVmYXVsdDoxMjM0NTY=" \
     --set=osm.remoteLogging.sampledFraction=1.0 \
     --timeout=900s
-    
 ```

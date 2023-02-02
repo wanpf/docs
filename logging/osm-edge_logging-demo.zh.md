@@ -35,6 +35,10 @@ osm install \
     --set=osm.remoteLogging.sampledFraction=1.0 \
     --timeout=900s
 ```
+🔴 注意：clickhouse 相关的参数，需要根据实际情况修改❗   
+    --set=osm.remoteLogging.address=10.25.0.100 \
+    --set=osm.remoteLogging.port=8123 \
+    --set=osm.remoteLogging.authorization="Basic ZGVmYXVsdDoxMjM0NTY=" \
 
 ## 3. 部署 booksdemo 
 ```bash
@@ -690,12 +694,7 @@ EOF
 
 ```
 
-
-
-
-
-
-
+## 4. booksdemo部署完成后，可以查看 clickhouse 的 log 表 ##
 
 
 

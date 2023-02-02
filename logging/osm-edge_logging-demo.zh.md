@@ -1,4 +1,4 @@
-# OSM Edge logging 测试
+# OSM Edge logging 写入 clickhouse 测试
 
 ## 1. 下载并安装 osm-edge 命令行工具
 
